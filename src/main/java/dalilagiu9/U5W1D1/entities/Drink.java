@@ -4,7 +4,6 @@ import lombok.Getter;
 import lombok.ToString;
 
 @Getter
-@ToString
 public class Drink extends Item{
     //ATTRIBUTES LIST:
     private String name;
@@ -15,5 +14,14 @@ public class Drink extends Item{
         super(calories,price);
         this.name = name;
 
+    }
+
+    @Override
+    public String toString() {
+        return "Drink{" +
+                "name='" + name + '\'' +
+                ", calories=" + calories +
+                ", price=" + price +
+                '}';
     }
 }

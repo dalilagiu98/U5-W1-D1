@@ -1,7 +1,9 @@
 package dalilagiu9.U5W1D1.entities;
 
+import lombok.ToString;
 import java.util.List;
 
+@ToString(callSuper = true)
 public class Pizza extends Item{
     //ATTRIBUTES LIST:
     private String name;
