@@ -8,7 +8,7 @@ public class Pizza extends Item{
     private List<Topping> toppingList;
 
     //CONSTRUCTOR:
-    public Pizza(String name, double calories, double price, List<Topping> toppingList){
+    public Pizza(String name, List<Topping> toppingList){
         super(1400, 4.20);
         this.name=name;
         this.toppingList = toppingList;
