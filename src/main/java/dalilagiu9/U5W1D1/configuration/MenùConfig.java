@@ -1,9 +1,14 @@
 package dalilagiu9.U5W1D1.configuration;
 
 import dalilagiu9.U5W1D1.entities.Drink;
+import dalilagiu9.U5W1D1.entities.Menù;
+import dalilagiu9.U5W1D1.entities.Pizza;
 import dalilagiu9.U5W1D1.entities.Topping;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Configuration
 public class MenùConfig {
@@ -11,11 +16,11 @@ public class MenùConfig {
     //BEANS TOPPING:
     @Bean
     public Topping tomatoTopping(){
-        return new Topping("Tomato", 322, 1.30);
+        return new Topping("Tomato", 648, 1.30);
     }
     @Bean
     public Topping cheeseTopping(){
-        return new Topping("Cheese", 426, 2.20);
+        return new Topping("Cheese", 752, 2.20);
     }
     @Bean
     public Topping hamTopping(){
@@ -44,5 +49,53 @@ public class MenùConfig {
         return new Drink("Beer", 456.9, 3.78);
     }
 
-    //
+    //BEANS PIZZA:
+    @Bean
+    public Pizza margheritaPizza(){
+        List<Topping> toppingList = new ArrayList<>();
+        toppingList.add(tomatoTopping());
+        toppingList.add(cheeseTopping());
+        return new Pizza("Margherita Pizza", toppingList);
+    }
+    @Bean
+    public Pizza hawaiianPizza(){
+        List<Topping> toppingList = new ArrayList<>();
+        toppingList.add(tomatoTopping());
+        toppingList.add(cheeseTopping());
+        toppingList.add(hamTopping());
+        toppingList.add(pineappleTopping());
+        return new Pizza("Hawaiian Pizza", toppingList);
+    }
+    @Bean
+    public Pizza salamiPizza(){
+        List<Topping> toppingList = new ArrayList<>();
+        toppingList.add(tomatoTopping());
+        toppingList.add(cheeseTopping());
+        toppingList.add(salamiTopping());
+        return new Pizza("Salami Pizza", toppingList);
+    }
+
+    //BEAN MENÚ:
+    @Bean
+    public Menù menùBean(){
+        List<Drink> drinkList = new ArrayList<>();
+        List<Topping> toppingList = new ArrayList<>();
+        List<Pizza> pizzaList = new ArrayList<>();
+
+        drinkList.add(waterDrink());
+        drinkList.add(cocaColaDrink());
+        drinkList.add(beerDrink());
+
+        toppingList.add(tomatoTopping());
+        toppingList.add(cheeseTopping());
+        toppingList.add(hamTopping());
+        toppingList.add(pineappleTopping());
+        toppingList.add(salamiTopping());
+
+        pizzaList.add(margheritaPizza());
+        pizzaList.add(hawaiianPizza());
+        pizzaList.add(salamiPizza());
+
+        return new Menù(pizzaList, drinkList, toppingList);
+    }
 }
